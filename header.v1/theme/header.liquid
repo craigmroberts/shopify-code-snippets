@@ -1,0 +1,85 @@
+<div class="header">
+    <div class="header__wrap container">
+
+        <div class="header__aside-icons hideOnDesktop">
+            <button class="icon icon--hover-circle icon-menu" type="button">
+                {%- render 'svg.menu' -%}
+            </button>
+            <button class="icon icon--hover-circle icon-search" type="button" onclick="SearchAutosuggest.toggleView();">
+                {%- render 'svg.search' -%}
+            </button>
+        </div>
+
+        <div class="header__logo">
+            <a href="/">
+                {%- if settings.logo != blank -%}
+                    <img src="{{ settings.logo | img_url: '250x' }}" alt="{{ settings.logo.alt }}">   
+                {%- else -%}
+                    <p>{{ shop.name }}</p>
+                {%- endif -%}
+            </a>
+        </div>
+        <div class="header__menu">
+            <div class="header__menu-wrap">
+                {% assign menu = linklists.main-menu %}
+
+                {%- if menu.links.size > 0 -%}
+                    <nav>
+                        {%- for link in menu.links -%}
+                            <a href="{{ link.url }}">{{ link.title }}</a>
+                        {%- endfor -%}
+                    </nav>
+                {%- endif -%}
+            </div>
+        </div>
+        <div class="header__aside"> 
+            <div class="header__aside-links">
+                <a href="/login">Login</a> /
+                <a href="/signup">Sign up</a>
+            </div>
+            <div class="header__aside-icons">
+                <button type="button" class="icon icon--hover-circle icon-flag">
+                    <img src="{{ 'flag-uk.png' | asset_img_url: '120x' }}" alt="UK">
+                </button>
+                <button class="icon icon--hover-circle icon-search" type="button" onclick="SearchAutosuggest.toggleView();">
+                    {%- render 'svg.search' -%}
+                </button>
+
+                <button class="icon icon--hover-circle icon-user hideOnDesktop" type="button">
+                    {%- render 'svg.user' -%}
+                </button>
+
+                <button class="icon icon--hover-circle icon-cart" type="button" data-cart-item-count="{{ cart.item_count }}">
+                    {%- render 'svg.cart' -%}
+                </button>
+            </div>
+        </div>
+    </div>
+    {%- render 'search-autosuggest', section : section -%}
+</div>
+
+{% schema %}
+{
+    "name": "Header",
+    "settings": [
+        {
+            "type": "link_list",
+            "id": "main",
+            "label": "Main Navigation",
+            "default": "main-menu"
+        },
+
+        {
+            "type": "header",
+            "content": "Search"
+        },
+
+        {
+            "type": "text",
+            "id": "searchPlaceholder",
+            "label": "Placeholder",
+            "default": "Search our store"
+        }
+    ]
+}
+{% endschema %}

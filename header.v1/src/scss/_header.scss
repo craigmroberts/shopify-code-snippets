@@ -1,0 +1,152 @@
+.header {
+    background-color: $black;
+    position: sticky;
+    top: 0;
+
+    height: 62px;
+
+    * {
+        height: inherit;
+    }
+
+    a {
+        color: $white;
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        padding: 0 1em;
+        font-size: 0.875em;
+
+        &:first-child {
+            padding-left: 0;
+        }
+
+        &:last-child {
+            padding-right: 0;
+        }
+    }
+
+    svg {
+        color: $white;
+        max-height: 16px;
+    }
+
+    .hideOnDesktop {
+        display: none;
+    }
+
+    &__logo {
+        flex: 1;
+        display: flex;
+        max-width: 20em;
+
+        img {
+            height: initial;
+            width: 100%;
+        }
+
+        a {
+            display: flex;
+            align-items: center;
+        }
+    }
+
+    &__wrap {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    &__aside-icons {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    &__menu {
+        flex: 2;
+        text-align: center;
+    }
+    
+    &__aside {
+        flex: 1;
+        display: flex;
+        justify-content: flex-end;
+        max-width: 20em;
+    }
+
+    &__aside-links {
+        display: flex;
+        justify-content: center;
+        color: $white;
+        align-items: center;
+        margin-right: 0.5em;
+        color: #C5C5C5;
+
+        &::after {
+            content: '';
+            margin-left: 1em;
+            background: rgba(255,255,255, 0.15);
+            width: 1px;
+            height: 1.25em;
+        }
+
+        a {
+            padding: 0.5em;
+            font-size: 0.85em;
+            color: inherit;
+        }
+    }
+}
+
+@media (max-width: 1185px) {
+    .header {
+        &__logo {
+            max-width: 12em;
+        }
+    }
+}
+
+@media (max-width: 990px) {
+    
+    .header {
+
+        .hideOnDesktop {
+            display: flex;
+
+            .icon-search {
+                display: initial;
+            }
+        }
+
+        &__wrap {
+            max-width: calc(100% - 1em);
+        }
+
+        &__logo {
+            position: absolute;
+            left: 0;
+            right: 0;
+            margin: auto;
+        }
+
+        &__menu {
+            display: none;
+        }
+        
+        &__aside-icons {
+
+            .icon-flag {
+                display: none;
+            }
+
+            .icon-search {
+                display: none;
+            }
+        }
+
+        &__aside-links {
+            display: none;
+        }
+    }   
+}

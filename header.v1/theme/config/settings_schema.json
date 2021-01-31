@@ -1,0 +1,13 @@
+[
+  {
+    "name" : "Logo",
+    "settings" : [
+      {
+        "type": "image_picker",
+        "id": "logo",
+        "label": "Logo",
+        "info" : "Used in for logos across the site"
+      }
+    ]
+  }
+]
